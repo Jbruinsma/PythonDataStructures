@@ -25,6 +25,9 @@ This project is a collection of core data structures implemented from scratch in
 - **Binary Search Trees (BSTs)**  
   Includes insert, delete, search, traversal (in-order, pre-order, post-order, level-order).
 
+- **Expression Trees**  
+  Binary tree implementation for expression evaluation and conversion.
+
 - **AVL Trees**  
   Self-balancing binary search tree implementation with rotation logic.
 
