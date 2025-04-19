@@ -29,7 +29,10 @@ This project is a collection of core data structures implemented from scratch in
   Self-balancing binary search tree implementation with rotation logic.
 
 - **Sorting Algorithms**  
-  Selection Sort, Insertion Sort, Merge Sort, Quick Sort, and Heap Sort.
+  Selection Sort, Insertion Sort, Merge Sort, and Quick Sort.
+
+- **Searching Algorithms**  
+  Linear Search and Binary Search.
 
 ## Features
 
