@@ -14,7 +14,7 @@ This project is a collection of core data structures implemented from scratch in
   Array-based and linked list-based stack implementations with push, pop, and peek.
 
 - **Queues**  
-  FIFO queue using lists and linked lists. Includes circular queue variant.
+  FIFO queue using lists and linked lists.
 
 - **Hash Tables**  
   Custom hash table with basic collision handling via chaining.
@@ -28,22 +28,9 @@ This project is a collection of core data structures implemented from scratch in
 - **AVL Trees**  
   Self-balancing binary search tree implementation with rotation logic.
 
-- **Graphs**  
-  Adjacency list-based graph representation with BFS and DFS traversal.
-
 - **Sorting Algorithms**  
   Selection Sort, Insertion Sort, Merge Sort, Quick Sort, and Heap Sort.
 
 ## Features
 
-- All structures are implemented without relying on Python's built-in equivalents (e.g., no `dict`, `list`, or `set` in logic).
-- Each module includes detailed comments and docstrings for educational clarity.
 - Unit tests and example usage scripts are included for most structures.
-
-## Getting Started
-
-Clone the repository:
-
-```bash
-git clone https://github.com/yourusername/python-data-structures.git
-cd python-data-structures
