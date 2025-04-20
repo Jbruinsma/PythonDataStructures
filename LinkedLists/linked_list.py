@@ -47,24 +47,25 @@ class LinkedList:
             self.tail = new_node
         self.size += 1
 
-    def remove(self, val= None, index= None):
+    def remove(self, val=None, index=None):
         if index is not None:
             if self._check_index(index):
                 if index == 0 and self.size > 1:
                     self.head = self.head.next
+                    if self.head:
+                        self.head.prev = None
                 elif index == 0 and self.size == 1:
                     self.head = None
                     self.tail = None
                 elif index == self.size - 1:
                     self.tail = self.tail.prev
-                    self.tail.next = None
+                    if self.tail:
+                        self.tail.next = None
                 else:
-                    curr_node_at_index = self._iterate(index)
-                    curr_prev = curr_node_at_index.prev
-                    curr_next = curr_node_at_index.next
-                    curr_prev.next = curr_next
-                    if curr_next:
-                        curr_next.prev = curr_prev
+                    curr_node = self._iterate(index)
+                    curr_node.prev.next = curr_node.next
+                    if curr_node.next:
+                        curr_node.next.prev = curr_node.prev
                 self.size -= 1
         elif val is not None:
             curr = self.head
@@ -78,10 +79,13 @@ class LinkedList:
                         self.tail = curr.prev
                         if self.tail:
                             self.tail.next = None
+                    else:
+                        curr.prev.next = curr.next
+                        if curr.next:
+                            curr.next.prev = curr.prev
                     self.size -= 1
                     return
                 curr = curr.next
-
 
     def contains(self, val):
         curr = self.head
