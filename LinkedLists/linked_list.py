@@ -152,7 +152,7 @@ def main():
     print(ll)
 
     ll.remove(index=2)  # remove 30
-    print("After removing index 2 (should remove 30):")
+    print("After removing index 2 (should remove 20):")
     print(ll)
     print()
 
@@ -164,7 +164,7 @@ def main():
 
     # Check contains
     print("Contains 20?", ll.contains(20))
-    print("Contains 10?", ll.contains(10))
+    print("Contains 5?", ll.contains(5))
     print()
 
     # Find value

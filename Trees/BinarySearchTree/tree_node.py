@@ -71,10 +71,14 @@ class TreeNode:
         queue = deque([self])
         vals = []
         while queue:
-            curr_node = queue.popleft()
-            vals.append(curr_node.val)
-            if curr_node.left: queue.append(curr_node.left)
-            if curr_node.right: queue.append(curr_node.right)
+            level_size = len(queue)
+            current_level = []
+            for i in range(level_size):
+                curr_node = queue.popleft()
+                current_level.append(curr_node.val)
+                if curr_node.left: queue.append(curr_node.left)
+                if curr_node.right: queue.append(curr_node.right)
+            vals.append(current_level)
         return vals
 
     def min_val(self):
