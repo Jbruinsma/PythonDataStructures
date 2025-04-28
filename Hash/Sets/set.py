@@ -1,41 +1,50 @@
+from typing import Any
+
 from Hash.HashTables.hash_table import HashTable
 
 
 class Set:
-    def __init__(self, capacity= 10):
+    def __init__(self, capacity= 10) -> None:
         self.table = HashTable(capacity)
 
-    def __str__(self):
-        return str(self.table)
+    def __str__(self) -> str:
+        items = []
+        for bucket in self.table.table:
+            if bucket is not None:
+                for pair in bucket:
+                    items.append(f"{pair[0]}")
+        return "{" + ", ".join(items) + "}"
 
-    def add(self, value):
+    def add(self, value : Any) -> None:
         self.table[value] = True
 
-    def remove(self, value):
+    def remove(self, value : Any) -> None:
         del self.table[value]
 
-    def contains(self, value):
+    def contains(self, value : Any) -> bool:
         return self.table[value] is not None
+
+    def __contains__(self, value : Any) -> bool:
+        return self.contains(value) is not None
 
 def main():
     s = Set()
-    print("\nADD: 'apple'")
+    print("Hash Set: \n")
+    print(s, "\n")
+    print("ADD: 'apple'\n")
     s.add("apple")
-    print(s)
-    print("\nADD: 'banana'")
+    print(s, "\n")
+    print("ADD: 'banana'\n")
     s.add("banana")
-    print(s)
-    print("\nADD: 'orange'")
+    print(s, "\n")
+    print("ADD: 'orange'\n")
     s.add("orange")
-    print(s)
-    print("\nADD: 'banana'")
+    print(s, "\n")
+    print("ADD: 'banana'\n")
     s.add("banana")
-    print(s)
-    print("\nContains 'banana'? ->", s.contains("banana"))
+    print(s, "\n")
+    print("Contains 'banana'? ->", "banana" in s )
     print("\nContains 'grape'? ->", s.contains("grape"))
-    s.remove("banana")
-    print("\nContains 'banana' after removal? →", s.contains("banana"))
-    print(s)
 
 if __name__ == "__main__":
     main()
