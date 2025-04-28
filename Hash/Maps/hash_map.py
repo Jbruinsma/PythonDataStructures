@@ -3,28 +3,34 @@ from typing import Any
 from Hash.HashTables.hash_table import HashTable
 
 
-class HashMap:
+class HashMap(HashTable):
 
-    def __init__(self, capacity : int= 10) -> None:
-        self.table = HashTable(capacity)
-
-    def __setitem__(self, key : Any, value : Any) -> None:
-        self.table[key] = value
-
-    def __getitem__(self, key : Any) -> Any:
-        return self.table[key]
-
-    def remove(self, key : Any) -> None:
-        del self.table[key]
-
-    def contains(self, key : Any) -> bool:
-        return self.table[key] is not None
-
-    def __contains__(self, key : Any) -> bool:
-        return self.table[key] is not None
+    def __init__(self, capacity: int = 10) -> None:
+        super().__init__(capacity)
 
     def __str__(self) -> str:
-        return str(self.table)
+        return super().__str__()
+
+    def __setitem__(self, key: Any, value: Any) -> None:
+        super().__setitem__(key, value)
+
+    def __getitem__(self, key: Any) -> Any:
+        return super().__getitem__(key)
+
+    def __delitem__(self, key: Any) -> None:
+        super().__delitem__(key)
+
+    def __contains__(self, key: Any) -> bool:
+        return super().get(key) is not None
+
+    def get(self, key: Any, replace: Any = None) -> Any:
+        return super().get(key, replace)
+
+    def remove(self, key: Any) -> None:
+        super().__delitem__(key)
+
+    def contains(self, key: Any) -> bool:
+        return super().get(key) is not None
 
 def main():
     m = HashMap()
@@ -47,7 +53,7 @@ def main():
     m.remove("city")
     print("After removing 'city': \n")
     print(m, "\n")
-    print("city ->", m['city'])
+    print("city ->", m.get("city"), "\n")
 
 if __name__ == "__main__":
     main()

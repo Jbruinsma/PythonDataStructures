@@ -3,14 +3,14 @@ from typing import Any
 from Hash.HashTables.hash_table import HashTable
 
 
-class Set:
+class Set(HashTable):
     def __init__(self, capacity= 10) -> None:
-        self.table = HashTable(capacity)
+        super().__init__(capacity)
 
     def __str__(self) -> str:
         items: str = "{"
         first_element = True
-        for bucket in self.table.table:
+        for bucket in self.table:
             if bucket is not None:
                 for pair in bucket:
                     if not first_element:
@@ -24,17 +24,27 @@ class Set:
                         items += f"{pair[0]}"
         return items + "}"
 
-    def add(self, value : Any) -> None:
-        self.table[value] = True
-
-    def remove(self, value : Any) -> None:
-        del self.table[value]
-
-    def contains(self, value : Any) -> bool:
-        return self.table[value] is not None
+    def __len__(self) -> int:
+        length = 0
+        for bucket in self.table:
+            if bucket is not None:
+                length += len(bucket)
+        return length
 
     def __contains__(self, value : Any) -> bool:
         return self.contains(value) is not None
+
+    def __delitem__(self, value : Any) -> None:
+        del self[value]
+
+    def add(self, value : Any) -> None:
+        self[value] = True
+
+    def remove(self, value : Any) -> None:
+        del self[value]
+
+    def contains(self, value : Any) -> bool:
+        return self.get(value) is not None
 
 def main():
     s = Set()
