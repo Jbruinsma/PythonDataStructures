@@ -1,9 +1,10 @@
 from Trees.BinarySearchTree.tree_node import TreeNode
+from typing import Any
 
 class BinarySearchTree:
 
-    def __init__(self, val= None, array= None):
-        self.root = None
+    def __init__(self, val: Any= None, array : list[Any]= None) -> None:
+        self.root : TreeNode | None = None
         if val is not None:
             self.root = TreeNode(val)
             return
@@ -12,16 +13,16 @@ class BinarySearchTree:
             for i in range(1, len(array)):
                 self.root.insert(array[i])
 
-    def __str__(self):
+    def __str__(self) -> str:
         def to_tuple(node):
             if node is None: return None
             return node.val, to_tuple(node.left), to_tuple(node.right)
         return str(to_tuple(self.root))
 
-    def to_array(self):
+    def to_array(self) -> list[Any]:
         return self.root.in_order()
 
-    def insert(self, val= None, array=None):
+    def insert(self, val: Any= None, array: list[Any]=None) -> None:
         if val is not None:
             if self.is_empty():
                 self.root = TreeNode(val)
@@ -34,40 +35,40 @@ class BinarySearchTree:
         else:
             raise ValueError("Must provide a value or an array to insert.")
 
-    def delete(self, val):
+    def delete(self, val: Any) -> None:
         self.root = self.root.delete(val)
 
-    def contains(self, val):
+    def contains(self, val : Any) -> bool:
         return self.root.contains(val)
 
-    def find(self, val):
+    def find(self, val : Any) -> TreeNode | None:
         return self.root.find(val)
 
-    def pre_order_traversal(self):
+    def pre_order_traversal(self) -> list[Any]:
         return self.root.pre_order()
 
-    def in_order_traversal(self):
+    def in_order_traversal(self) -> list[Any]:
         return self.root.in_order()
 
-    def post_order_traversal(self):
+    def post_order_traversal(self) -> list[Any]:
         return self.root.post_order()
 
-    def level_order_traversal(self):
+    def level_order_traversal(self) -> list[Any]:
         return self.root.level_order()
 
-    def find_min_val(self):
+    def find_min_val(self) -> Any:
         return self.root.min_val()
 
-    def find_max_val(self):
+    def find_max_val(self) -> Any:
         return self.root.max_val()
 
-    def height(self):
+    def height(self) -> int:
         return self.root.height()
 
-    def size(self):
+    def size(self) -> int:
         return self.root.size()
 
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.root is None
 
 def main():
