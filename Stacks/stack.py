@@ -1,22 +1,25 @@
+from typing import Any
+
+
 class Stack:
 
-    def __init__(self):
-        self.stack = []
+    def __init__(self) -> None:
+        self.stack : list[Any] = []
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"\n{self.stack}"
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.stack)
 
-    def push(self, val):
+    def push(self, val : Any) -> None:
         if val is not None:
             self.stack.append(val)
 
-    def pop(self):
+    def pop(self) -> Any | None:
         return self.stack.pop()
 
-    def peek(self):
+    def peek(self) -> Any | None:
         try:
             return self.stack[-1]
         except IndexError:
