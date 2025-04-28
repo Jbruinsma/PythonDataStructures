@@ -1,25 +1,28 @@
+from typing import Any
+
+
 class Queue:
 
     def __init__(self):
-        self.queue = []
+        self.queue : list[Any] = []
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"\n{self.queue}"
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.queue)
 
-    def push(self, val):
+    def push(self, val : Any) -> None:
         if val is not None:
             self.queue.append(val)
 
-    def pop(self):
+    def pop(self) -> Any | None:
         try:
             return self.queue.pop(0)
         except IndexError:
             return None
 
-    def peek(self):
+    def peek(self) -> Any | None:
         try:
             return self.queue[0]
         except IndexError:
