@@ -8,12 +8,21 @@ class Set:
         self.table = HashTable(capacity)
 
     def __str__(self) -> str:
-        items = []
+        items: str = "{"
+        first_element = True
         for bucket in self.table.table:
             if bucket is not None:
                 for pair in bucket:
-                    items.append(f"{pair[0]}")
-        return "{" + ", ".join(items) + "}"
+                    if not first_element:
+                        items += ", "
+                    else:
+                        first_element = False
+
+                    if isinstance(pair[0], str):
+                        items += f"'{pair[0]}'"
+                    else:
+                        items += f"{pair[0]}"
+        return items + "}"
 
     def add(self, value : Any) -> None:
         self.table[value] = True

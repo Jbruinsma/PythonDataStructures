@@ -29,6 +29,7 @@ class HashMap:
 def main():
     m = HashMap()
     print("Hash Map: \n")
+    print(m, "\n")
     print("Adding: 'name': 'Alice'\n")
     m['name'] = "Alice"
     print(m, "\n")

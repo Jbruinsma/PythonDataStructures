@@ -8,12 +8,19 @@ class HashTable:
         self.table = [None] * capacity
 
     def __str__(self) -> str:
-        items : list = []
+        items: str = "{"
+        first_element = True
         for bucket in self.table:
             if bucket is not None:
                 for pair in bucket:
-                    items.append(f'{pair[0]}: {pair[1]}')
-        return '{' + ', '.join(items) + '}'
+                    if not first_element:
+                        items += ", "
+                    else:
+                        first_element = False
+                    key = f"'{pair[0]}'" if isinstance(pair[0], str) else str(pair[0])
+                    value = f"'{pair[1]}'" if isinstance(pair[1], str) else str(pair[1])
+                    items += f"{key}: {value}"
+        return items + "}"
 
     def __len__(self) -> int:
         count : int = 0
@@ -35,7 +42,14 @@ class HashTable:
             self.table[index].append([key, value])
 
     def __getitem__(self, key : Any) -> Any:
-        return self.get(key)
+        index: int = self._compute_hash(key)
+        if self.table[index] is None:
+            raise KeyError(f"Key {key} not found")
+        else:
+            for pair in self.table[index]:
+                if pair[0] == key:
+                    return pair[1]
+        raise KeyError(f"Key {key} not found")
 
     def __delitem__(self, key : Any) -> None:
         index : int = self._compute_hash(key)
