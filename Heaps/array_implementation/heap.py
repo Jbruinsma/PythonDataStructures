@@ -48,7 +48,7 @@ class Heap:
         self.heap[index1], self.heap[index2] = self.heap[index2], self.heap[index1]
 
 def main() -> None:
-    h = Heap()
+    h : Heap = Heap()
     print("Min Heap: \n")
     print(h, "\n")
     print("Inserting: 50, 30, 10, 5\n")
