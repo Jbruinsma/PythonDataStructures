@@ -1,0 +1,31 @@
+Graph G = (V, E)
+    n = |V| number of vertices
+    m = |E| number of edges
+
+Degrees:
+
+    Undirected: degree(v) = how many edges touch v
+    Directed: indegree(v) = incoming edges, outdegree(v) = outgoing edges
+
+Counting ends of edges:
+
+    Undirected: sum(degree(v)) = 2m
+        Use when you know m and want average degree, or you are proving parity facts.
+
+        Average degree = 2m / n
+        Odd-degree rule: The number of odd-degree vertices is always even.
+
+    Directed: sum(indegree(v)) = sum(outdegree(v)) = m
+        Use when you have m and need average indegree or outdegree; or to check degree sums.
+
+Maximum possible edges (Simple graphs):
+
+    Undirected: m = n(n-1)/2
+    Directed: m = n(n-1)
+
+Density:
+
+    Sparse: m grows like O(n)
+    Dense: m grows like O(n^2)
+
+        Use when choosing representations or algorithms.
