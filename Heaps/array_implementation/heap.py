@@ -1,16 +1,31 @@
-from typing import Any
+from typing import Any, List
 
 
 class Heap:
 
     def __init__(self) -> None:
-        self.heap : list[Any] = []
+        self.heap : List[Any] = []
 
     def __str__(self) -> str:
         return str(self.heap)
 
     def __len__(self) -> int:
         return len(self.heap)
+
+    def create_heap(self, h: List[Any]) -> None:
+        n = len(h) - 1
+        for i in range(len(h) // 2, -1, -1):
+            k = i
+            u = h[k]
+            heap = False
+            while not heap and 2 * k <= n:
+                j = 2 * k
+                if j < n:
+                    if h[j] < h[j + 1]: j += 1
+                if u >= h[j]: heap = True
+                else: h[k] = h[j]; k = j
+            h[k] = u
+        self.heap = h
 
     def insert(self, val: Any) -> None:
         if val is not None:
@@ -52,9 +67,8 @@ def main() -> None:
     print("Min Heap: \n")
     print(h, "\n")
     print("Inserting: 50, 30, 10, 5\n")
-    for val in [50, 30, 10, 5]:
-        h.insert(val)
-        print(h, "\n")
+    h.create_heap([50, 30, 10, 5])
+    print(h, "\n")
     print(f'Remove root: {h.remove_min()}\n')
     print(h)
 
